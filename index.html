@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="sv">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fotogalleri</title>
+
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="light"></div>
+    <div class="hero-box">
+      <!-- Välkomst box -->
+      <h2>Välkommen till mitt fotogalleri</h2>
+      <p>Klicka på ett år för att se mina bilder</p>
+    </div>
+
+    <video autoplay muted loop id="bg-video">
+      <!-- Spelar videon automatiskt, den är tystad och loopar -->
+      <source src="lillablommor.mp4" type="video/mp4" />
+    </video>
+
+    <nav class="years">
+      <!-- Meny för år och månader -->
+      <div class="year">
+        <!-- En knapp för året -->
+        <a href="#">2021</a>
+        <div class="months">
+          <!-- Länkar med månader -->
+          <a href="2021.januari.html">Januari</a>
+          <a href="2021.februari.html">Februari</a>
+          <a href="2021.mars.html">Mars</a>
+          <a href="2021.april.html">April</a>
+          <a href="2021.maj.html">Maj</a>
+          <a href="2021.juni.html">Juni</a>
+          <a href="2021.juli.html">Juli</a>
+          <a href="2021.augusti.html">Augusti</a>
+          <a href="2021.september.html">September</a>
+          <a href="2021.oktober.html">Oktober</a>
+          <a href="2021.november.html">November</a>
+          <a href="2021.december.html">December</a>
+        </div>
+      </div>
+
+      <div class="year">
+        <a href="#">2022</a>
+        <div class="months">
+          <a href="2022.januari.html">Januari</a>
+          <a href="2022.februari.html">Februari</a>
+          <a href="2022.mars.html">Mars</a>
+          <a href="2022.april.html">April</a>
+          <a href="2022.maj.html">Maj</a>
+          <a href="2022.juni.html">Juni</a>
+          <a href="2022.juli.html">Juli</a>
+          <a href="2022.augusti.html">Augusti</a>
+          <a href="2022.september.html">September</a>
+          <a href="2022.oktober.html">Oktober</a>
+          <a href="2022.november.html">November</a>
+          <a href="2022.december.html">December</a>
+        </div>
+      </div>
+
+      <div class="year">
+        <a href="#">2023</a>
+        <div class="months">
+          <a href="2023.januari.html">Januari</a>
+          <a href="2023.februari.html">Februari</a>
+          <a href="2023.mars.html">Mars</a>
+          <a href="2023.april.html">April</a>
+          <a href="2023.maj.html">Maj</a>
+          <a href="2023.juni.html">Juni</a>
+          <a href="2023.juli.html">Juli</a>
+          <a href="2023.augusti.html">Augusti</a>
+          <a href="2023.september.html">September</a>
+          <a href="2023.oktober.html">Oktober</a>
+          <a href="2023.november.html">November</a>
+          <a href="2023.december.html">December</a>
+        </div>
+      </div>
+
+      <div class="year">
+        <a href="#">2024</a>
+        <div class="months">
+          <a href="2024.januari.html">Januari</a>
+          <a href="2024.februari.html">Februari</a>
+          <a href="2024.mars.html">Mars</a>
+          <a href="2024.april.html">April</a>
+          <a href="2024.maj.html">Maj</a>
+          <a href="2024.juni.html">Juni</a>
+          <a href="2024.juli.html">Juli</a>
+          <a href="2024.augusti.html">Augusti</a>
+          <a href="2024.september.html">September</a>
+          <a href="2024.oktober.html">Oktober</a>
+          <a href="2024.november.html">November</a>
+          <a href="2024.december.html">December</a>
+        </div>
+      </div>
+
+      <div class="year">
+        <a href="#">2025</a>
+        <div class="months">
+          <a href="2025.januari.html">Januari</a>
+          <a href="2025.februari.html">Februari</a>
+          <a href="2025.mars.html">Mars</a>
+          <a href="2025.april.html">April</a>
+          <a href="2025.maj.html">Maj</a>
+          <a href="2025.juni.html">Juni</a>
+          <a href="2025.juli.html">Juli</a>
+          <a href="2025.augusti.html">Augusti</a>
+          <a href="2025.september.html">September</a>
+          <a href="2025.oktober.html">Oktober</a>
+          <a href="2025.november.html">November</a>
+          <a href="2025.december.html">December</a>
+        </div>
+      </div>
+
+      <div class="year">
+        <a href="#">2026</a>
+        <div class="months">
+          <a href="2026.januari.html">Januari</a>
+          <a href="2026.februari.html">Februari</a>
+          <a href="2026.mars.html">Mars</a>
+          <a href="2026.april.html">April</a>
+          <a href="2026.maj.html">Maj</a>
+          <a href="2026.juni.html">Juni</a>
+          <a href="2026.juli.html">Juli</a>
+          <a href="2026.augusti.html">Augusti</a>
+          <a href="2026.september.html">September</a>
+          <a href="2026.oktober.html">Oktober</a>
+          <a href="2026.november.html">November</a>
+          <a href="2026.december.html">December</a>
+        </div>
+      </div>
+    </nav>
+    <script>
+      // Hämtar light effekten
+      const light = document.querySelector(".light");
+      // Känner av musens rörelse och flyttar effekten
+      document.addEventListener("mousemove", (e) => {
+        // X led
+        light.style.left = e.clientX + "px";
+        // Y led
+        light.style.top = e.clientY + "px";
+      });
+      // Kör effekten när sidan har laddats
+      window.addEventListener("load", () => {
+        // Lägger till show för att starta animationen
+        document.querySelector(".hero-box").classList.add("show");
+        // Hämtar alla år knappar och lägger till en liten fördröjning
+        document.querySelectorAll(".year").forEach((year, index) => {
+          setTimeout(() => {
+            year.classList.add("show"); // Lägger till show på en år knapp i taget
+          }, index * 200); //200ms mer för varje knapp
+        });
+      });
+    </script>
+  </body>
+</html>

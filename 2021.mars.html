@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="sv">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mars</title>
+
+    <style>
+      body {
+        margin: 0; /* Tar bort marginal */
+        overflow: hidden; /* Tar bort scroll */
+        height: 100vh; /* Sidan täcker hela skärmen */
+        background: linear-gradient(to right, #a18cd1, #fbc2eb); /* Bakgrund */
+      }
+
+      img {
+        position: absolute; /* Gör att bilden kan flyttas */
+        width: 300px; /* Storlek */
+        top: 50%; /* Bilden hamnar i mitten */
+        transform: translateY(-50%); /* Justerar så den blir centrerad */
+        left: -320px; /* Start utanför vänster sida */
+        border-radius: 10px; /* Rundade hörn */
+      }
+
+      /* Textrutan */
+      .text {
+        position: fixed; /* Fast på skärmen */
+        left: 20px; /* Avstånd från vänster */
+        top: 50%; /* Mitt i höjden */
+        transform: translateY(
+          -50%
+        ); /* Gör så att den hamnar i mitten på y axeln */
+        background: rgba(243, 232, 255, 0.8); /* Bakgrund */
+        padding: 15px; /* Luft */
+        border-radius: 10px; /* Rundade hörn */
+        max-width: 250px; /* Maxbredd */
+        z-index: 10; /* Ligger på andra saker */
+      }
+
+      /* Tillbakaknappen */
+      .back-btn {
+        position: fixed; /* Fast */
+        top: 20px; /* Avstånd från toppen */
+        left: 20px; /* Avstånd från vänster */
+        background: #ddd6fe; /* Bakgrundsfärg */
+        color: black; /* Textfärg */
+        text-decoration: none; /* Tar bort understrykning */
+        padding: 10px 15px; /* Luft runt text */
+        border-radius: 15px; /* Rundade hörn */
+        z-index: 20; /* Ligger över allt annat */
+      }
+
+      /* Hovereffekt när man tar musen över knappen */
+      .back-btn:hover {
+        background: #c4b5fd;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Textruta  -->
+    <div class="text">
+      <h2>Mars</h2>
+      <p>Sushi med syrran</p>
+    </div>
+
+    <!-- Tillbakaknapp -->
+    <a href="index.html" class="back-btn">← Tillbaka</a>
+
+    <!-- Bilden -->
+    <img id="bild" src="Image (23).jpg" alt="Bild" />
+
+    <script>
+      const bild = document.getElementById("bild"); /* Hämtar bilden */
+      let x = -320; /* Startposition */
+      const speed = 3; /* Hastighet */
+      function loop() {
+        x += speed; /* Flyttar bilden åt höger */
+        bild.style.left = x + "px"; /* Uppdaterar positionen */
+        /* Om bilden är utanför högra kanten */
+        if (x > window.innerWidth) {
+          x = -320; /* Starta om från början */
+        }
+        requestAnimationFrame(loop); /* Kör funktionen igen */
+      }
+      loop(); /* Startar animationen */
+    </script>
+  </body>
+</html>

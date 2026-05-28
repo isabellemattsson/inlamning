@@ -1,0 +1,115 @@
+body {
+  margin: 0; /* Tar bort marginal */
+  font-family: Arial, sans-serif;
+  background-color: #f3e8ff;
+  color: #333;
+}
+
+header {
+  text-align: center;
+  padding: 20px; /* Inre luft */
+}
+
+/* Navigation mellan år och månader */
+nav {
+  display: flex; /* Gör att de kan flexas */
+  justify-content: center; /* Innehållet i mitten */
+  flex-wrap: wrap; /* Gör att knapparna kan byta raderna */
+  gap: 25px; /* Mellanrum mellan knapparna */
+  margin: 20px; /* Yttre mellanrum runt knapparna */
+}
+
+nav a {
+  padding: 15px 20px; /* Inre mellanrum i knapparna */
+  background-color: #ddd6fe;
+  border-radius: 20px; /* Rundade hörn */
+  text-decoration: none; /* Tar bort understrykning */
+  color: black; /* Textfärg */
+}
+
+nav a:hover {
+  background-color: #c4b5fd; /* Mörkare lila vid hover */
+}
+
+/* Mobilanpassning */
+@media (max-width: 600px) {
+  h1 {
+    font-size: 1.5rem; /* Mindre rubrik på små skärmar */
+  }
+}
+
+#bg-video {
+  position: fixed; /* Videon är fast i bakgrunden */
+  top: 0; /* Börjar längst upp på skärmen */
+  left: 0; /* Börjar längst till vänster */
+  width: 100%; /* Täcker hela bredden */
+  height: 100%; /* Täcker hela höjden */
+  object-fit: cover; /* Videon täcker hela ytan*/
+  z-index: -1; /* Lägger videon bakom allt annat */
+  filter: brightness(0.5); /* Gör videon mörkare */
+}
+
+/* Knappen */
+.year {
+  position: relative; /* För att dropdown ska fungera och hamna på rätt plats */
+}
+
+/* Dropdown */
+.months {
+  display: none; /* Gömmer dropdownen från början */
+  position: absolute; /* Placeras till year knappen*/
+  top: 110%; /* Lite under knappen */
+  left: 50%; /* Startar i mitten */
+  background: white;
+  border-radius: 10px; /* Rundade hörn */
+  padding: 5px; /* Inre mellanrum */
+  min-width: 100px; /* Minsta bredd */
+  width: 90px; /* Bredd */
+  transform: translateX(-50%); /* Lägger dropdownen i mitten */
+}
+
+/* Länkarna i dropdown */
+.months a {
+  display: block; /* Varje knappblir en egen rad */
+  padding: 6px; /* Inre mellanrum */
+  font-size:
+    0,
+    8 rem;
+  text-decoration: none; /* Tar bort understrykning */
+  color: black; /* Textfärg */
+}
+
+.year:hover .months {
+  display: block; /* Visar dropdownen när musen är över året */
+}
+
+.months a:hover {
+  background-color: #a78bfa; /* Lila bakgrund vid hover */
+  color: white; /* Textfärg */
+}
+/* Välkomst boxen */
+.hero-box {
+  margin: 10px auto; /* Flyttar boxen till mitten */
+  padding: 10px 20px; /* Inre mellanrum i boxen */
+  max-width: 900px; /* Maxbredd */
+  background-color: #ddd6fe; /* Bakgrundsfärg */
+  border-radius: 20px; /* Rundade hörn */
+  text-align: center; /* Flyttar texten till mitten */
+}
+
+.light {
+  opacity: 0.5; /* Gör effekten lite genomskinlig */
+  position: fixed; /* Sitter fast och påveras inte av scroll */
+  width: 180px; /* Bredd */
+  height: 180px; /* Höjd */
+  border-radius: 50%; /* Gör den rund */
+  pointer-events: none; /* Gör att musen kan klicka och ignorerar effekten */
+  background-color: rgba(
+    190,
+    120,
+    255,
+    0.4
+  ); /* Lila färg med lite transparens */
+  transform: translate(-50%, -50%); /* Lägger effekten i mitten av musen */
+  z-index: 0; /* Lägger effekten bakom annat*/
+}

@@ -1,0 +1,391 @@
+<!doctype html>
+<html lang="sv">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Januari</title>
+  </head>
+
+  <body>
+    <!-- Tillbaka-knapp -->
+    <a href="index.html" class="back-btn">← Tillbaka</a>
+
+    <style>
+      body {
+        font-family: Verdana, sans-serif;
+        margin: 0; /* Tar bort marginal */
+        background-color: #f3e8ff;
+      }
+
+      * {
+        box-sizing: border-box; /* Gör att paddingen räknas med i storleken */
+      }
+
+      /* Mellanrum mellan bilderna */
+      .row > .column {
+        padding: 0 8px;
+      }
+      /* Tar bort float */
+      .row:after {
+        content: "";
+        display: table;
+        clear: both;
+      }
+
+      /* Bildkolumn */
+      .column {
+        float: left; /* Bilder hamnar bredvid varandra */
+        width: 25%; /* Fyra bilder per rad */
+      }
+
+      /* The Modal (background) */
+      .modal {
+        display: none; /* Gömmer modalen från början */
+        position: fixed; /* Låser modalen så den ligger på hela sidan */
+        z-index: 1; /* Gör att modalen ligger över annat innehåll */
+        padding-top: 100px; /* Avstånd från toppen */
+        left: 0; /* Startar längst till vänster */
+        top: 0; /* Startar högst upp */
+        width: 100%; /* Tar upp hela sidans bredd */
+        height: 100%; /* Tar upp hela sidans höjd */
+        overflow: auto; /* Gör att man kan scrolla om innehållet är för stort */
+        background-color: black; /* Bakgrundsfärg bakom bildspelet */
+      }
+
+      /* Modal Content */
+      .modal-content {
+        position: relative; /* Styr positionnen i modalen */
+        background-color: #fefefe; /* Bakgrundsfärg för innehållet */
+        margin: auto; /* Gör så att modalen hamnar i mitten */
+        padding: 0; /* Ingen inre marginal */
+        width: 90%; /* Tar upp 90% av skärmens bredd */
+        max-width: 1200px; /* Maxbredd */
+      }
+
+      /* The Close Button */
+      .close {
+        color: white; /* Textfärg */
+        position: absolute; /* Lägger knappen i förhållande till modalen */
+        top: 10px; /* Avstånd från toppen */
+        right: 25px; /* Avstånd från höger */
+        font-size: 35px; /* Storlek på texten */
+        font-weight: bold; /* Tjock text */
+      }
+
+      /* När man hovrar */
+      .close:hover,
+      .close:focus {
+        color: #999; /* Färg vid hover */
+        text-decoration: none; /* Ingen understrykning */
+        cursor: pointer; /* Handikon */
+      }
+
+      /* Gömmer bilder */
+      .mySlides {
+        display: none;
+      }
+      /* Gör muspekaren till en hand */
+      .cursor {
+        cursor: pointer;
+      }
+
+      /* Next & previous buttons */
+      .prev,
+      .next {
+        cursor: pointer; /* Handikon */
+        position: absolute; /* Placeras ovanpå bilden */
+        top: 50%; /* Mitt på höjden */
+        width: auto; /* Bredden anpassas efter innehållet */
+        padding: 16px; /* Inre marginal */
+        margin-top: -50px; /* Justerar så de hamnar centrerat */
+        color: white; /* Vit pil */
+        font-weight: bold; /* Gör texten fet */
+        font-size: 20px; /* Textstorlek */
+        transition: 0.6s ease; /* Hoveranimation */
+        border-radius: 0 3px 3px 0; /* Rundade hörn */
+        user-select: none; /* Gör att text inte kan markeras */
+        -webkit-user-select: none; /* Safari */
+      }
+
+      /* Position the "next button" to the right */
+      .next {
+        right: 0;
+        border-radius: 3px 0 0 3px;
+      }
+
+      /* On hover, add a black background color with a little bit see-through */
+      .prev:hover,
+      .next:hover {
+        background-color: rgba(0, 0, 0, 0.8); /* Mörk bakgrund vid hover */
+      }
+
+      /* Number text (1/3 etc) */
+      .numbertext {
+        color: #f2f2f2; /* Textfärg */
+        font-size: 12px; /* Textstorlek */
+        padding: 8px 12px; /* Luft runt texten */
+        position: absolute; /* Placeras ovanpå bilden */
+        top: 0; /* Ligger högst upp */
+      }
+
+      /* Tar bort mellanrum under bilder */
+      img {
+        margin-bottom: -4px;
+      }
+
+      /* Visar text under bilderna */
+      .caption-container {
+        text-align: center; /* Lägger texten i mitten */
+        background-color: black; /* Svart bakgrund */
+        padding: 2px 16px; /* Lägger in luft */
+        color: white; /* Textfärg */
+      }
+
+      .demo {
+        opacity: 0.6; /* Gör bilderna lite genomskinliga */
+      }
+
+      /* Helt synlig när man hoverar */
+      .active,
+      .demo:hover {
+        opacity: 1;
+      }
+
+      img.hover-shadow {
+        transition: 0.3s; /* Effekten ändras på 0.3 sekunder */
+      }
+      /* Skugga när man hovrar över bilden */
+      .hover-shadow:hover {
+        box-shadow:
+          0 4px 8px 0 rgba(0, 0, 0, 0.2),
+          0 6px 20px 0 rgba(0, 0, 0, 0.19);
+      }
+
+      /* Styr stoleken på bilden */
+      .mySlides img {
+        max-width: 80%; /* Max vara 80% av bredden */
+        max-height: 70vh; /* Max vara 70% av höjden */
+        width: auto; /* Behåller original */
+        height: auto; /* Behåller original */
+        margin: auto; /* Lägger bilden i mitten */
+        display: block; /* Gör så att margin auto fungerar */
+        object-fit: contain; /* Hela bilden syns utan att klippas av */
+      }
+
+      /* Rutan under bildspel */
+      .modal-content {
+        position: relative; /* Gör att de i rutan kan hamna rätt */
+        margin: auto; /* Lägger rutan i mitten */
+        padding: 20px; /* Lägger in luft i rutan */
+        width: 90%; /* Tar upp 90% av skärmen */
+        max-width: 1200px; /* Max bredden */
+        background-color: transparent; /* tar bort vitt */
+      }
+
+      /* Tillbaka-knapp */
+      .back-btn {
+        position: fixed; /* Fast på skärmen även när man scrollar */
+        top: 20px; /* 20px från toppen */
+        left: 20px; /* 20px från vänster */
+        background: #ddd6fe; /* Bakgrund */
+        color: black; /* Textfärg */
+        text-decoration: none; /* Tar bort understrykning */
+        padding: 10px 15px; /* Luft runt texten */
+        border-radius: 15px; /* Rundade hörn */
+        z-index: 20; /* Ligger över annat innehåll */
+      }
+
+      .back-btn:hover {
+        background: #c4b5fd; /* Mörkare lila vid hover */
+      }
+    </style>
+    <!-- Rubrik -->
+    <h2 style="text-align: center">Januari</h2>
+
+    <div class="row">
+      <!-- Bild 1 -->
+      <div class="column">
+        <img
+          src="Image (49).jpg"
+          style="width: 100%"
+          onclick="
+            openModal(); /* Öppnar bildspelet */
+            currentSlide(1); /* Visar bild nummer 1 */
+          "
+          class="hover-shadow cursor"
+        />
+      </div>
+      <!-- Bild 2 -->
+      <div class="column">
+        <img
+          src="Image (12).jpg"
+          style="width: 100%"
+          onclick="
+            openModal();
+            currentSlide(2);
+          "
+          class="hover-shadow cursor"
+        />
+      </div>
+      <div class="column">
+        <img
+          src="Image (28).jpg"
+          style="width: 100%"
+          onclick="
+            openModal();
+            currentSlide(3);
+          "
+          class="hover-shadow cursor"
+        />
+      </div>
+      <div class="column">
+        <img
+          src="Image (42).jpg"
+          style="width: 100%"
+          onclick="
+            openModal();
+            currentSlide(4);
+          "
+          class="hover-shadow cursor"
+        />
+      </div>
+    </div>
+
+    <div id="myModal" class="modal">
+      <!-- Stäng-knapp -->
+      <span class="close cursor" onclick="closeModal()">&times;</span>
+      <!-- Innehåll i modal -->
+      <div class="modal-content">
+        <!-- Sida 1 -->
+        <div class="mySlides">
+          <!-- Bildnummer -->
+          <div class="numbertext">1 / 4</div>
+          <!-- Bild -->
+          <img src="Image (49).jpg" style="width: 100%" />
+        </div>
+
+        <!-- Sida 2 -->
+        <div class="mySlides">
+          <div class="numbertext">2 / 4</div>
+          <img src="Image (12).jpg" style="width: 100%" />
+        </div>
+
+        <div class="mySlides">
+          <div class="numbertext">3 / 4</div>
+          <img src="Image (28).jpg" style="width: 100%" />
+        </div>
+
+        <div class="mySlides">
+          <div class="numbertext">4 / 4</div>
+          <img src="Image (42).jpg" style="width: 100%" />
+        </div>
+
+        <!-- Knappen innan och efter -->
+        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+        <a class="next" onclick="plusSlides(1)">&#10095;</a>
+        <!-- Bildtext -->
+        <div class="caption-container">
+          <p id="caption"></p>
+        </div>
+
+        <!-- Mindre bilder -->
+
+        <div class="column">
+          <img
+            class="demo cursor"
+            src="Image (49).jpg"
+            style="width: 100%"
+            onclick="currentSlide(1)"
+            alt="Åreskutan"
+          />
+        </div>
+        <div class="column">
+          <img
+            class="demo cursor"
+            src="Image (12).jpg"
+            style="width: 100%"
+            onclick="currentSlide(2)"
+            alt="Åre kyrka"
+          />
+        </div>
+        <div class="column">
+          <img
+            class="demo cursor"
+            src="Image (28).jpg"
+            style="width: 100%"
+            onclick="currentSlide(3)"
+            alt="Julbelysning"
+          />
+        </div>
+        <div class="column">
+          <img
+            class="demo cursor"
+            src="Image (42).jpg"
+            style="width: 100%"
+            onclick="currentSlide(4)"
+            alt="På väg till skolan"
+          />
+        </div>
+      </div>
+    </div>
+
+    <script>
+      /* Öppnar modal */
+      function openModal() {
+        document.getElementById("myModal").style.display = "block";
+      }
+      /* Stänger modal */
+      function closeModal() {
+        document.getElementById("myModal").style.display = "none";
+      }
+      /* Startvärde */
+      var slideIndex = 1;
+      /* Visar första bilden */
+      showSlides(slideIndex);
+      /* Byter bild framåt eller bakåt */
+      function plusSlides(n) {
+        showSlides((slideIndex += n));
+      }
+      /* Visar vald bild */
+      function currentSlide(n) {
+        showSlides((slideIndex = n));
+      }
+      /* Funktion som styr bildspelet */
+      function showSlides(n) {
+        /* Variabel för loop */
+        var i;
+        var slides =
+          document.getElementsByClassName(
+            "mySlides",
+          ); /* Hämtar alla stora bilder */
+        var dots =
+          document.getElementsByClassName(
+            "demo",
+          ); /* Hämtar alla mindre bilder */
+        var captionText =
+          document.getElementById("caption"); /* Hämtar bildtext */
+        /* Om man går för långt fram */
+        if (n > slides.length) {
+          slideIndex = 1;
+        }
+        /* Om man går bakåt före första bilden */
+        if (n < 1) {
+          slideIndex = slides.length;
+        }
+        /* Döljer alla bilder */
+        for (i = 0; i < slides.length; i++) {
+          slides[i].style.display = "none";
+        }
+        for (i = 0; i < dots.length; i++) {
+          dots[i].className = dots[i].className.replace(" active", "");
+        }
+        /* Visar rätt bild */
+        slides[slideIndex - 1].style.display = "block";
+        /* Markerar liten bild */
+        dots[slideIndex - 1].className += " active";
+        /* Visar bildtext */
+        captionText.innerHTML = dots[slideIndex - 1].alt;
+      }
+    </script>
+  </body>
+</html>

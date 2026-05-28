@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="sv">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Oktober</title>
+
+    <style>
+      body {
+        margin: 0;
+        height: 100vh;
+        overflow: hidden;
+      }
+
+      img {
+        width: 100%;
+        height: 100vh;
+        object-fit: contain;
+        background: #f3e8ff;
+        opacity: 0;
+        animation: fadeIn 1s ease forwards;
+      }
+
+      .text {
+        position: fixed;
+        left: 20px;
+        top: 50%;
+        transform: translateY(-50%);
+        background: rgba(243, 232, 255, 0.8);
+        padding: 15px;
+        border-radius: 10px;
+        max-width: 250px;
+        z-index: 10;
+      }
+
+      @keyframes fadeIn {
+        to {
+          opacity: 1;
+        }
+      }
+
+      .back-btn {
+        position: fixed;
+        top: 20px;
+        left: 20px;
+        background: #ddd6fe;
+        color: black;
+        text-decoration: none;
+        padding: 10px 15px;
+        border-radius: 15px;
+        z-index: 20;
+      }
+
+      .back-btn:hover {
+        background: #c4b5fd;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="text">
+      <h2>67</h2>
+    </div>
+    <a href="index.html" class="back-btn">← Tillbaka</a>
+    <img src="Image (61).jpg" alt="Bild" />
+  </body>
+</html>

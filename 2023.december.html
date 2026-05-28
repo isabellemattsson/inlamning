@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="sv">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>December</title>
+
+    <style>
+      body {
+        margin: 0;
+        overflow: hidden;
+        height: 100vh;
+        background: linear-gradient(to right, #a18cd1, #fbc2eb);
+      }
+
+      img {
+        position: absolute;
+        width: 300px;
+        top: 50%;
+        transform: translateY(-50%);
+        left: -320px;
+        border-radius: 10px;
+      }
+
+      .text {
+        position: fixed;
+        left: 20px;
+        top: 50%;
+        transform: translateY(-50%);
+        background: rgba(243, 232, 255, 0.8);
+        padding: 15px;
+        border-radius: 10px;
+        max-width: 250px;
+        z-index: 10;
+      }
+
+      .back-btn {
+        position: fixed;
+        top: 20px;
+        left: 20px;
+        background: #ddd6fe;
+        color: black;
+        text-decoration: none;
+        padding: 10px 15px;
+        border-radius: 15px;
+        z-index: 20;
+      }
+
+      .back-btn:hover {
+        background: #c4b5fd;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="text">
+      <h2>December</h2>
+      <p>På en julmarknad med en kompis</p>
+    </div>
+
+    <a href="index.html" class="back-btn">← Tillbaka</a>
+    <img id="bild" src="shared image (74).jpg" alt="Bild" />
+
+    <script>
+      const bild = document.getElementById("bild");
+      let x = -320;
+      const speed = 3;
+      function loop() {
+        x += speed;
+        bild.style.left = x + "px";
+        if (x > window.innerWidth) {
+          x = -320;
+        }
+        requestAnimationFrame(loop);
+      }
+      loop();
+    </script>
+  </body>
+</html>

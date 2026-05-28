@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="sv">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Februari</title>
+
+    <style>
+      body {
+        margin: 0; /* Tar bort marginal */
+        height: 100vh; /* Sidan blir lika hög som skärmen */
+        overflow: hidden; /* Hindrar scroll */
+      }
+
+      img {
+        width: 100%; /* Bilden fyller hela bredden */
+        height: 100vh; /* Bilden fyller hela höjden på skärmen */
+        object-fit: contain; /* Hela bilden visas utan att klippas av */
+        background: #f3e8ff; /* Bakgrund bakom bilden */
+        opacity: 0; /* Bilden är osynlig från början */
+        animation: fadeIn 1s ease forwards; /* Fadein animation i 1 sekund */
+      }
+
+      .text {
+        position: fixed; /* Rutan ligger fast på skärmen */
+        left: 20px; /* Avståndet från vänster */
+        top: 50%; /* Placeras mitt på höjden */
+        transform: translateY(
+          -50%
+        ); /* Flyttar upp rutan så att den centreras */
+        background: rgba(243, 232, 255, 0.8); /* Bakgrund */
+        padding: 15px; /* Luft i rutan */
+        border-radius: 10px; /* Rundade hörn */
+        max-width: 250px; /* Maxbredd på rutan */
+        z-index: 10; /* Gör att rutan ligger på bilden */
+      }
+      /* Animation */
+      @keyframes fadeIn {
+        to {
+          opacity: 1; /* Bilden blir helt synlig */
+        }
+      }
+
+      .back-btn {
+        position: fixed; /* Knappen ligger fast på sidan */
+        top: 20px; /* Avståndet från toppen */
+        left: 20px; /* Avståndet från vänster */
+        background: #ddd6fe; /* Bakgrund */
+        color: black; /* Textfärg */
+        text-decoration: none; /* Tar bort understrykning */
+        padding: 10px 15px; /* Luft runt texten */
+        border-radius: 15px; /* Rundade hörn */
+        z-index: 20; /* Ligger på andra saker */
+      }
+
+      .back-btn:hover {
+        background: #c4b5fd; /* Mörkare lila vid hover */
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Textruta -->
+    <div class="text">
+      <!-- Rubrik -->
+      <h2>Middag hos mormor</h2>
+    </div>
+    <!-- tillbakaknapp -->
+    <a href="index.html" class="back-btn">← Tillbaka</a>
+    <img src="Image (89).jpg" alt="Bild" />
+    <!-- Bild -->
+  </body>
+</html>
